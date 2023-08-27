@@ -12,7 +12,7 @@
       "scope": "search:read",
       "authorization_content_type": "application/x-www-form-urlencoded",
       "verification_tokens": {
-        "openai": "16bb153180ae4716834f25dc2ed0b52b"
+        "openai": "fa9d0447108a4cc69983ed934d5ed40b"
       }
     },
     "api": {
@@ -37,7 +37,7 @@
       "scope": "search:read",
       "authorization_content_type": "application/x-www-form-urlencoded",
       "verification_tokens": {
-        "openai": "16bb153180ae4716834f25dc2ed0b52b"
+        "openai": "fa9d0447108a4cc69983ed934d5ed40b"
       }
     },
     "api": {
@@ -78,8 +78,8 @@
     "schema_version": "v1",
     "name_for_model": "KlarnaProducts",
     "name_for_human": "Klarna Shopping",
-    "description_for_human": "Search and compare prices from thousands of online shops",
-    "description_for_model": "Use the Klarna plugin to get relevant product suggestions for any shopping or researching purpose. The query to be sent should not include stopwords like articles, prepositions and determinants. The api works best when searching for words that are related to products, like their name, brand, model or category. Links will always be returned and should be shown to the user.",
+    "description_for_human": "Search and compare prices from thousands of online shops. Only available in the US.",
+    "description_for_model": "Assistant uses the Klarna plugin to get relevant product suggestions for any shopping or product discovery purpose. Assistant will reply with the following 3 paragraphs 1) Search Results 2) Product Comparison of the Search Results 3) Followup Questions. The first paragraph contains a list of the products with their attributes listed clearly and concisely as bullet points under the product, together with a link to the product and an explanation. Links will always be returned and should be shown to the user. The second paragraph compares the results returned in a summary sentence starting with \"In summary\". Assistant comparisons consider only the most important features of the products that will help them fit the users request, and each product mention is brief, short and concise. In the third paragraph assistant always asks helpful follow-up questions and end with a question mark. When assistant is asking a follow-up question, it uses it's product expertise to provide information pertaining to the subject of the user's request that may guide them in their search for the right product.",
     "api": {
       "type": "openapi",
       "url": "https://www.klarna.com/us/shopping/public/openai/v0/api-docs/",
@@ -107,7 +107,7 @@
       "type": "service_http",
       "authorization_type": "bearer",
       "verification_tokens": {
-        "openai": "cdfcc1dadb3540b8aa7c5c5f1512849b"
+        "openai": "5d6aceab8edc454f960e54e7868db4f0"
       }
     },
     "logo_url": "https://cdn.shopify.com/shop-assets/static_uploads/shop-logo-white-bg-purple.png",
@@ -34494,5 +34494,291 @@
     "logo_url": "https://slack.com/img/slack_logo_mark.svg",
     "contact_email": "TODO",
     "legal_info_url": "TODO"
+  },
+  "capcut.com": {
+    "schema_version": "v1",
+    "name_for_human": "CapCut",
+    "name_for_model": "CapCut",
+    "description_for_human": "Submit your video ideas, and let AI craft a script, find suitable footage, and merge everything into a polished video.",
+    "description_for_model": "The CapCut plugin transforms user text requests into customized video scripts for voiceovers, enabling automated video generation using the English version of the scripts. If user wants to generate video, model should generate an English script based on the topic of user wants, and generate a video based on the script automatically, using the default aspect ratio, just generate the video first, after video is generated, model should not output the script, but should prompt user the script and aspect ratio can be re-configured, then generate video once again. If user wants to generate script first, model should generate the English script based on the topic the user wants, then prompt user to extend or shorten the paragraph or just generate the video, in this case model should also prompt the user to set the aspect ratio, and prompt the default value before video is generated. After the video is generated, Model should prompt users may need to wait about one minute for video loading when clicking the video link. In each chat session, model should prompt user once to contact capcut-web@bytedance.com for any feedback of any video when the first video link is returned, just prompt the email address once in every chat session, do not prompt when every video link is returned.",
+    "auth": {
+      "type": "service_http",
+      "authorization_type": "bearer",
+      "verification_tokens": {
+        "openai": "dcef864277e84a939c22f9d63e5f8bd1"
+      }
+    },
+    "api": {
+      "type": "openapi",
+      "url": "https://www.capcut.com/openapi.yaml",
+      "is_user_authenticated": false
+    },
+    "logo_url": "https://www.capcut.com/logo.png",
+    "contact_email": "capcut-web@bytedance.com",
+    "legal_info_url": "https://sf21-draftcdn-sg.ibytedtos.com/obj/ies-hotsoon-draft-sg/capcut/via_clause_privacy_policy_en.html"
+  },
+  "public-api.wordpress.com": {
+    "schema_version": "v1",
+    "name_for_human": "WordPress.com Plugin",
+    "name_for_model": "a8c_wpcom",
+    "description_for_human": "Plugin for managing WordPress.com websites, blogging, and ecommerce",
+    "description_for_model": "Plugin for managing WordPress.com websites, blogging, and ecommerce",
+    "auth": {
+      "type": "oauth",
+      "client_url": "https://public-api.wordpress.com/oauth2/authorize",
+      "scope": "ai-plugin",
+      "authorization_url": "https://public-api.wordpress.com/oauth2/token",
+      "authorization_content_type": "application/x-www-form-urlencoded",
+      "verification_tokens": {
+        "openai": "d6aeef743910446491626403ae32d413"
+      }
+    },
+    "api": {
+      "type": "openapi",
+      "url": "https://public-api.wordpress.com/wpcom/v2/ai-plugin/openapi.yaml",
+      "is_user_authenticated": true
+    },
+    "logo_url": "https://public-api.wordpress.com/chrome-webapp/icon_128.png",
+    "contact_email": "dan.walmsley@a8c.com",
+    "legal_info_url": "https://wordpress.com/tos/"
+  },
+  "g2crowd.com": {
+    "schema_version": "v1",
+    "name_for_human": "G2.com",
+    "name_for_model": "g2_dot_com",
+    "description_for_human": "Find the best software and service solutions to your business needs.",
+    "description_for_model": "Help the user with choosing the best software / services to use at work. Search the G2 catalog for the best solutions to solve their problems.",
+    "api": {
+      "type": "openapi",
+      "url": "https://www.g2.com/openai.json"
+    },
+    "auth": {
+      "type": "none"
+    },
+    "logo_url": "https://www.g2.com/assets/chat_gpt_plugin/plugin-logo-1fc390241b7ea80f436570c759884746d08074b6f3281789a2c543bcd6e75ef3.png",
+    "contact_email": "support@g2.com",
+    "legal_info_url": "https://legal.g2.com"
+  },
+  "medium.com": {
+    "schema_version": "v1",
+    "name_for_human": "Medium plugin",
+    "name_for_model": "MediumGPTPlugin",
+    "description_for_human": "Plugin for accessing, browsing and extracting Medium content.",
+    "description_for_model": "Requests Medium posts, stories, to do manipulation and queries on the content.",
+    "auth": {
+      "type": "none"
+    },
+    "api": {
+      "type": "openapi",
+      "url": "https://medium.com/_/gpt/openapi.yaml",
+      "is_user_authenticated": false
+    },
+    "logo_url": "https://miro.medium.com/v2/1*m-R_BkNf1Qjr1YbyOIJY2w.png",
+    "contact_email": "support@medium.com",
+    "legal_info_url": "https://policy.medium.com/medium-terms-of-service-9db0094a1e0f"
+  },
+  "www.redfin.com": {
+    "schema_version": "v1",
+    "name_for_human": "Redfin",
+    "name_for_model": "redfin",
+    "description_for_human": "Have questions about the housing market? Find the answers to help you win in today's market.",
+    "description_for_model": "This tool is designed to provide users with current and accurate information regarding real estate listings within the United States and Canada. Utilize this tool to assist users in obtaining relevant details about the real estate market, including property listings, market trends, tour homes, mortgage rate and related inquiries. Be advised that this tool should only be employed in response to user queries specifically related to real estate topics. Refrain from activating this tool for inquiries unrelated to the real estate domain.",
+    "auth": {
+      "type": "service_http",
+      "authorization_type": "bearer",
+      "verification_tokens": {
+        "openai": "14df4be1fa3498e670f5ea86e95c2bc083bf504db2ad2f20e99c3f884e6eaaf5"
+      }
+    },
+    "api": {
+      "type": "openapi",
+      "url": "https://www.redfin.com/webhooks/tron/descriptions/openapi.yaml",
+      "is_user_authenticated": false
+    },
+    "logo_url": "https://ssl.cdn-redfin.com/vLATEST/images/logos/redfin-logo-square-red-500.png",
+    "contact_email": "support@redfin.com",
+    "legal_info_url": "https://www.redfin.com/about/terms-of-use"
+  },
+  "redfin.com": {
+    "schema_version": "v1",
+    "name_for_human": "Redfin",
+    "name_for_model": "redfin",
+    "description_for_human": "Have questions about the housing market? Find the answers to help you win in today's market.",
+    "description_for_model": "This tool is designed to provide users with current and accurate information regarding real estate listings within the United States and Canada. Utilize this tool to assist users in obtaining relevant details about the real estate market, including property listings, market trends, tour homes, mortgage rate and related inquiries. Be advised that this tool should only be employed in response to user queries specifically related to real estate topics. Refrain from activating this tool for inquiries unrelated to the real estate domain.",
+    "auth": {
+      "type": "service_http",
+      "authorization_type": "bearer",
+      "verification_tokens": {
+        "openai": "14df4be1fa3498e670f5ea86e95c2bc083bf504db2ad2f20e99c3f884e6eaaf5"
+      }
+    },
+    "api": {
+      "type": "openapi",
+      "url": "https://www.redfin.com/webhooks/tron/descriptions/openapi.yaml",
+      "is_user_authenticated": false
+    },
+    "logo_url": "https://ssl.cdn-redfin.com/vLATEST/images/logos/redfin-logo-square-red-500.png",
+    "contact_email": "support@redfin.com",
+    "legal_info_url": "https://www.redfin.com/about/terms-of-use"
+  },
+  "app.asana.com": {
+    "schema_version": "v1",
+    "name_for_human": "Asana",
+    "name_for_model": "Asana",
+    "description_for_human": "Create projects and tasks in Asana to plan and organize your work.",
+    "description_for_model": "Asana creates projects and tasks to help users plan, organize, and manage their work.",
+    "api": {
+      "type": "openapi",
+      "url": "https://app.asana.com/ai-plugin/openapi.json",
+      "has_user_authentication": true
+    },
+    "auth": {
+      "type": "oauth",
+      "instructions": "",
+      "client_url": "https://app.asana.com/-/oauth_authorize",
+      "scope": "",
+      "authorization_url": "https://app.asana.com/-/oauth_token",
+      "authorization_content_type": "application/x-www-form-urlencoded",
+      "verification_tokens": {
+        "openai": "edfe2b128a134627beb1573c305da0dd"
+      }
+    },
+    "logo_url": "https://d3ki9tyy5l5ruj.cloudfront.net/obj/df5bcec7e9873dddebdd1328901c287f0f069750/asana-logo-favicon@3x.png",
+    "legal_info_url": "https://asana.com/terms",
+    "contact_email": "apps-external@asana.com"
+  },
+  "instacart.com": {
+    "schema_version": "v1",
+    "name_for_model": "Instacart",
+    "name_for_human": "Instacart",
+    "description_for_model": "The Instacart plugin can be used to create a shopping list when a recipe or meal plan is mentioned. Exclude items the user already has from the shopping list. If multiple options for ingredients are provided, separate them into individual ingredients in the shopping list. Always save the user's question in the question field. Always populate the 'partner_name' field with value 'OpenAI'. Here are some examples of food or grocery related queries where the Instacart plugin can be used: chocolate cake recipe, dinner plan for a vegetarian family of 4, instructions to make orange chicken, healthy snacks for kids to bring to school, vegetarian dinner party dish ideas, lunch ideas for a picnic in the park, how to make lasagna, dinner ideas, meal plan for a family of 4, breakfast suggestions, snack ideas for a movie night with friends, squash and pasta dish with additional ingredient suggestions. Parse all ingredients referenced, including optional ingredients, as separate ingredients so that they can be correctly interpreted as unique items by the plugin. Do include optional ingredients and separate the items in the shopping list. Always keep the ingredient quantity. Ask the users if they want to purchase the ingredients and related items on Instacart, and if users agree, generate a shopping list using the Instacart plugin and response with: Here's your Instacart shopping list for [Recipe Name]. \n\nAdditional guidelines and examples: \n\n**Guideline**\n- For ingredient containing bundled items such as 'butter or margarine', 'chicken broth or wine', 'mixed nuts (e.g. ...)', 'vegetables (...)', and 'Optional toppings (...)' you need to separate the ingredient into individual items in the shopping list, e.g. 'butter or margarine' becomes ['butter', 'margarine'] in the shopping list, 'Raw vegetables (e.g., carrot sticks, cucumber slices, bell pepper strips)' becomes ['carrot sticks', 'cucumber slices', 'bell pepper strips']\n- If users say they have something, mark it as \"you already have\" in the list and don't add it to the shopping list\n\nExample 1: \nuser: garlic butter shrimp recipe  \nassistant: Here's a delicious garlic butter shrimp recipe: Ingredients:  1 pound large shrimp  ...  1/4 cup chicken broth or white wine (optional)   Salt and pepper to taste ...  \n**Note that the shopping list should contain ['1/4 cup chicken broth', '1/4 cup white wine', 'Salt', 'pepper', ...] instead of ['1/4 cup chicken broth or white wine (optional)', 'Salt and pepper to taste', ...]\n\nExample 2:  \nuser: I have squash and pasta. what can I make and what other ingredients do I need?   \nassistant: You can make a delicious squash and pasta dish with just a few additional ingredients. Here's a simple recipe:    Ingredients:   Squash (you already have)   Pasta (you already have)   Olive oil   onion   garlic   Salt and pepper, ...   \n**Note that the shopping list should contain ['Olive oil', 'onion', 'garlic', 'salt', 'pepper', ...] but without 'Squash' or 'Pasta' in it since user has them already.",
+    "description_for_human": "What’s cookin'? Ask about recipes, meal plans, & more -- and get ingredients delivered from 40,000+ stores!",
+    "auth": {
+      "type": "none"
+    },
+    "api": {
+      "type": "openapi",
+      "url": "https://www.instacart.com/rest/llm_integration/config/openapi.yaml"
+    },
+    "logo_url": "https://www.instacart.com/assets/beetstrap/brand/2022/carrotlogo-1286c257354036d178c09e815906198eb7f012b8cdc4f6f8ec86d3e64d799a5b.png",
+    "contact_email": "help@instacart.com",
+    "legal_info_url": "https://www.instacart.com/terms"
+  },
+  "coupert.com": {
+    "schema_version": "v1",
+    "name_for_human": "Coupert",
+    "name_for_model": "Coupert",
+    "description_for_human": "Search for the internet’s best coupons from thousands of online stores.",
+    "description_for_model": "Assistant uses the Coupert plugin to get coupon suggestions for any shopping or product discovery purpose. Assistant will reply with the following 3 paragraphs 1) Store 2) Coupon Codes 3) Followup Questions. The first paragraph contains store info with their name and cashback, together with a link to the store. Links will always be returned and should be shown to the user with text (Go Shopping). The second paragraph contains a list of the coupons with their code and their Success Rate with field savedRateIn24H and concisely as bullet points under the store, together with a link to the store. Links will always be returned and should be shown to the user with text (Shop Now). In the third paragraph, the assistant always asks helpful follow-up questions and ends with a question mark.",
+    "auth": {
+      "type": "none"
+    },
+    "api": {
+      "type": "openapi",
+      "url": "https://www.coupert.com/api/v2/openai/docs",
+      "is_user_authenticated": false
+    },
+    "logo_url": "https://www.coupert.com/img/favicon.svg",
+    "contact_email": "service@coupert.com",
+    "legal_info_url": "https://www.coupert.com/privacy"
+  },
+  "www.coupert.com": {
+    "schema_version": "v1",
+    "name_for_human": "Coupert",
+    "name_for_model": "Coupert",
+    "description_for_human": "Search for the internet’s best coupons from thousands of online stores.",
+    "description_for_model": "Assistant uses the Coupert plugin to get coupon suggestions for any shopping or product discovery purpose. Assistant will reply with the following 3 paragraphs 1) Store 2) Coupon Codes 3) Followup Questions. The first paragraph contains store info with their name and cashback, together with a link to the store. Links will always be returned and should be shown to the user with text (Go Shopping). The second paragraph contains a list of the coupons with their code and their Success Rate with field savedRateIn24H and concisely as bullet points under the store, together with a link to the store. Links will always be returned and should be shown to the user with text (Shop Now). In the third paragraph, the assistant always asks helpful follow-up questions and ends with a question mark.",
+    "auth": {
+      "type": "none"
+    },
+    "api": {
+      "type": "openapi",
+      "url": "https://www.coupert.com/api/v2/openai/docs",
+      "is_user_authenticated": false
+    },
+    "logo_url": "https://www.coupert.com/img/favicon.svg",
+    "contact_email": "service@coupert.com",
+    "legal_info_url": "https://www.coupert.com/privacy"
+  },
+  "sparkpost.com": {
+    "schema_version": "v1",
+    "name_for_human": "MessageBird",
+    "name_for_model": "messagebird",
+    "description_for_human": "Plugin for communicating with your customers, for marketing and customer service.",
+    "description_for_model": "Communicate with your customers",
+    "auth": {
+      "type": "oauth",
+      "instructions": "",
+      "client_url": "https://app.messagebird.com/oauth2/auth",
+      "scope": "",
+      "authorization_url": "https://nest.messagebird.com/auth/oauth2/token",
+      "authorization_content_type": "application/x-www-form-urlencoded",
+      "verification_tokens": {
+        "openai": "aed5c44f02824921a9098dec3a46496f"
+      }
+    },
+    "api": {
+      "type": "openapi",
+      "url": "https://messagebird.com/.well-known/openapi.yaml",
+      "is_user_authenticated": true
+    },
+    "logo_url": "https://messagebird.com/.well-known/logomark.png",
+    "contact_email": "support@messagebird.com",
+    "legal_info_url": "https://messagebird.com/legal"
+  },
+  "lucid.app": {
+    "schema_version": "v1",
+    "name_for_human": "Lucid",
+    "name_for_model": "lucid",
+    "description_for_human": "Easily clarify complexity when you create and edit diagrams in chat.",
+    "description_for_model": "Plugin for creating diagrams and flowcharts using Lucidchart. Useful for visualizing both simple and complex diagrams. Can be used to represent processes, systems, decisions, and anything else that can be put in a diagram.",
+    "auth": {
+      "type": "service_http",
+      "authorization_type": "bearer",
+      "verification_tokens": {
+        "openai": "1cbc114fe256485b8e1d75acbf0fae79"
+      }
+    },
+    "api": {
+      "type": "openapi",
+      "url": "https://lucid.app/ai/openapi.yaml"
+    },
+    "logo_url": "https://cdn-cashy-static-assets.lucidchart.com/ai/chat-gpt-plugin/lucid-logo-2023.png",
+    "contact_email": "support@lucidchart.com",
+    "legal_info_url": "https://lucid.co/legal"
+  },
+  "www.instacart.com": {
+    "schema_version": "v1",
+    "name_for_model": "Instacart",
+    "name_for_human": "Instacart",
+    "description_for_model": "The Instacart plugin can be used to create a shopping list when a recipe or meal plan is mentioned. Exclude items the user already has from the shopping list. If multiple options for ingredients are provided, separate them into individual ingredients in the shopping list. Always save the user's question in the question field. Always populate the 'partner_name' field with value 'OpenAI'. Here are some examples of food or grocery related queries where the Instacart plugin can be used: chocolate cake recipe, dinner plan for a vegetarian family of 4, instructions to make orange chicken, healthy snacks for kids to bring to school, vegetarian dinner party dish ideas, lunch ideas for a picnic in the park, how to make lasagna, dinner ideas, meal plan for a family of 4, breakfast suggestions, snack ideas for a movie night with friends, squash and pasta dish with additional ingredient suggestions. Parse all ingredients referenced, including optional ingredients, as separate ingredients so that they can be correctly interpreted as unique items by the plugin. Do include optional ingredients and separate the items in the shopping list. Always keep the ingredient quantity. Ask the users if they want to purchase the ingredients and related items on Instacart, and if users agree, generate a shopping list using the Instacart plugin and response with: Here's your Instacart shopping list for [Recipe Name]. \n\nAdditional guidelines and examples: \n\n**Guideline**\n- For ingredient containing bundled items such as 'butter or margarine', 'chicken broth or wine', 'mixed nuts (e.g. ...)', 'vegetables (...)', and 'Optional toppings (...)' you need to separate the ingredient into individual items in the shopping list, e.g. 'butter or margarine' becomes ['butter', 'margarine'] in the shopping list, 'Raw vegetables (e.g., carrot sticks, cucumber slices, bell pepper strips)' becomes ['carrot sticks', 'cucumber slices', 'bell pepper strips']\n- If users say they have something, mark it as \"you already have\" in the list and don't add it to the shopping list\n\nExample 1: \nuser: garlic butter shrimp recipe  \nassistant: Here's a delicious garlic butter shrimp recipe: Ingredients:  1 pound large shrimp  ...  1/4 cup chicken broth or white wine (optional)   Salt and pepper to taste ...  \n**Note that the shopping list should contain ['1/4 cup chicken broth', '1/4 cup white wine', 'Salt', 'pepper', ...] instead of ['1/4 cup chicken broth or white wine (optional)', 'Salt and pepper to taste', ...]\n\nExample 2:  \nuser: I have squash and pasta. what can I make and what other ingredients do I need?   \nassistant: You can make a delicious squash and pasta dish with just a few additional ingredients. Here's a simple recipe:    Ingredients:   Squash (you already have)   Pasta (you already have)   Olive oil   onion   garlic   Salt and pepper, ...   \n**Note that the shopping list should contain ['Olive oil', 'onion', 'garlic', 'salt', 'pepper', ...] but without 'Squash' or 'Pasta' in it since user has them already.",
+    "description_for_human": "What’s cookin'? Ask about recipes, meal plans, & more -- and get ingredients delivered from 40,000+ stores!",
+    "auth": {
+      "type": "none"
+    },
+    "api": {
+      "type": "openapi",
+      "url": "https://www.instacart.com/rest/llm_integration/config/openapi.yaml"
+    },
+    "logo_url": "https://www.instacart.com/assets/beetstrap/brand/2022/carrotlogo-1286c257354036d178c09e815906198eb7f012b8cdc4f6f8ec86d3e64d799a5b.png",
+    "contact_email": "help@instacart.com",
+    "legal_info_url": "https://www.instacart.com/terms"
+  },
+  "edmunds.com": {
+    "schema_version": "v1",
+    "name_for_human": "Edmunds",
+    "name_for_model": "edmunds",
+    "description_for_human": "Looks up the Edmunds.com expert review for a car given its make, model and year.",
+    "description_for_model": "When a user provides a car's make, model and year, this will lookup the Edmunds.com official review.",
+    "auth": {
+      "type": "none"
+    },
+    "api": {
+      "type": "openapi",
+      "url": "https://api.edmunds.com/openapi.yaml"
+    },
+    "logo_url": "https://api.edmunds.com/logo.png",
+    "contact_email": "bigdataeng@edmunds.com",
+    "legal_info_url": "https://www.edmunds.com/about/visitor-agreement.html"
   }
 }

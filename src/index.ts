@@ -56,20 +56,25 @@ async function main() {
   await pMap(
     domains,
     async (domain, index) => {
-      if (index > maxIndex) {
-        maxIndex = index
-        progressBar.update(maxIndex + 1)
-      }
+      try {
+        if (index > maxIndex) {
+          maxIndex = index
+          progressBar.update(maxIndex + 1)
+        }
 
-      const res = await getAIPluginMetadataForDomain(domain)
-      if (res) {
-        // save the plugins every time we find a new one
-        aiPlugins[domain] = res
-        await utils.writeJson('ai-plugins.json', aiPlugins)
-      }
+        const res = await getAIPluginMetadataForDomain(domain)
+        if (res) {
+          // save the plugins every time we find a new one
+          aiPlugins[domain] = res
+          await utils.writeJson('ai-plugins.json', aiPlugins)
+        }
 
-      if (index % 10000 === 0) {
-        cache.save(true)
+        if (index % 10000 === 0) {
+          cache.save(true)
+        }
+      }
+      catch (err) {
+        console.error('caught error', err)
       }
     },
     { concurrency: 128 }
@@ -89,8 +94,9 @@ async function getAIPluginMetadataForDomainImpl(domain: string): Promise<any> {
     const url = `https://${domain}/.well-known/ai-plugin.json`
     const parsedUrl = new URL(url)
     const res: any = await got(url, {
+      retry: {limit: 3},
       timeout: {
-        request: 10000
+        request: 30000
       }
     }).json()
 
@@ -108,6 +114,6 @@ async function getAIPluginMetadataForDomainImpl(domain: string): Promise<any> {
 }
 
 main().catch((err) => {
-  console.error('error', err)
+  console.error('GPT well known, caught error', err)
   process.exit(1)
 })
