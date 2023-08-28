@@ -64,20 +64,29 @@ async function main() {
 
         const res = await getAIPluginMetadataForDomain(domain)
         if (res) {
-          // save the plugins every time we find a new one
+          // set the plugin once we find it
           aiPlugins[domain] = res
+        }
+
+        if (index % 100 === 0) {
+          // save every hundred iterations
           await utils.writeJson('ai-plugins.json', aiPlugins)
         }
 
-        if (index % 10000 === 0) {
+        if (index % 2500 === 0) {
           cache.save(true)
         }
       }
       catch (err) {
-        console.error('caught error', err)
+        console.error('caught error in calls', err)
+        try {
+          await utils.writeJson('ai-plugins.json', aiPlugins)
+        } catch (err) {
+          console.error('Could not save', err)
+        }
       }
     },
-    { concurrency: 128 }
+    { concurrency: 64 }
   )
 
   progressBar.stop()
@@ -93,10 +102,10 @@ async function getAIPluginMetadataForDomainImpl(domain: string): Promise<any> {
   try {
     const url = `https://${domain}/.well-known/ai-plugin.json`
     const parsedUrl = new URL(url)
-    const res: any = await got(url, {
+    const res: any = await got(parsedUrl, {
       retry: {limit: 3},
       timeout: {
-        request: 30000
+        request: 10000
       }
     }).json()
 
